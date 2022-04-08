@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->char('gender',1);
-            $table->tinyInteger('status');
-            $table->string('address_line1', 255);
-            $table->string('address_line2', 255);
-            $table->string('city', 50);
-            $table->string('country', 50);
+            $table->char('gender',1)->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->string('address_line1', 255)->nullable();
+            $table->string('address_line2', 255)->nullable();
+            $table->string('city', 50)->nullable();
+            $table->string('country', 50)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

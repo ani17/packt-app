@@ -4,7 +4,7 @@
 <div class="card">
   <div class="card-header">Edit Post Details</div>
   <div class="card-body">
-      
+      @include('error')
       <form action="{{ url('posts/' .$post->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")

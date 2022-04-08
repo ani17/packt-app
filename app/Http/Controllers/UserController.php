@@ -37,6 +37,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'min:3', 'max:255'],
+            'email' => ['required', 'email'],
+            'gender' => ['required'],
+            'status' => ['required'],
+            'address_line1' => ['required', 'regex:/^[-a-zA-Z0-9,.\s\/\(\)]*$/', 'min:1', 'max:255'],
+            'address_line2' => ['required', 'regex:/^[-a-zA-Z0-9,.\s\/\(\)]*$/', 'min:1', 'max:255'],
+            'city' => ['required'],
+            'country' => ['required'],
+            'password' => ['required', 'min:8', 'max:20'],
+        ]);
+
         $input = $request->all();
         
         $input['password'] = Hash::make($input['password']);
@@ -78,6 +90,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'min:3', 'max:255'],
+            'email' => ['required', 'email'],
+            'gender' => ['required'],
+            'status' => ['required'],
+            'address_line1' => ['required', 'regex:/^[-a-zA-Z0-9,.\s\/\(\)]*$/', 'min:1', 'max:255'],
+            'address_line2' => ['required', 'regex:/^[-a-zA-Z0-9,.\s\/\(\)]*$/', 'min:1', 'max:255'],
+            'city' => ['required'],
+            'country' => ['required'],
+        ]);
+        
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);

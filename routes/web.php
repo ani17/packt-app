@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +13,20 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TokenController;
+use Illuminate\Http\Request;
+
+Route::group(['middleware' => ['auth']], function() {
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::resource("/users", UserController::class);
+    Route::resource("/posts", PostController::class);
+    Route::get("/token", ([TokenController::class, "index"]));
 });
 
-Route::resource("/users", UserController::class);
-Route::resource("/posts", PostController::class);
+require __DIR__.'/auth.php';

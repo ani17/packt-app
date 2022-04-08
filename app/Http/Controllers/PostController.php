@@ -36,6 +36,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => ['required', 'unique:posts', 'min:3', 'max:255'],
+            'body' => ['required', 'min:3', 'max:255']
+        ]);
+
         $input = $request->all();
         
         Post::create($input);
@@ -75,6 +80,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => ['required', 'unique:posts', 'min:3', 'max:255'],
+            'body' => ['required', 'min:3', 'max:255']
+        ]);
+        
         $post = Post::find($id);
         $input = $request->all();
         $post->update($input);
