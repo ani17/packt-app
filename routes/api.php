@@ -22,4 +22,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get("/users", ([App\Http\Controllers\Api\UserController::class, "index"]));
     Route::get("/users/{id}", ([App\Http\Controllers\Api\UserController::class, "show"]));
+
+    Route::get("/posts", ([App\Http\Controllers\Api\PostController::class, "index"]));
+    Route::get("/posts/{id}", ([App\Http\Controllers\Api\PostController::class, "show"]));
 });
