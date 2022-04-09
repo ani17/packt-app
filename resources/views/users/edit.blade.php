@@ -16,11 +16,29 @@
         <label>Email</label></br>
         <input type="email" name="email" id="email" value="{{$user->email}}" class="form-control"></br>
 
-        <label>Gender</label></br>
+        <!-- <label>Gender</label></br>
         <input type="text" name="gender" id="gender" value="{{$user->gender}}" class="form-control"></br>
 
-         <label>Status</label></br>
-        <input type="text" name="status" id="status" value="{{$user->status}}" class="form-control"></br>
+        <label>Status</label></br>
+        <input type="text" name="status" id="status" value="{{$user->status}}" class="form-control"></br> -->
+
+        <div class="form-group">
+          <label><strong>Gender :</strong></label>
+          <select id='gender' name="gender" class="form-control" style="width: 350px">
+              <option value="">Select</option>
+              <option value="M" {{$user->gender == "M" ? "selected" : ""}}>Male</option>
+              <option value="F" {{$user->gender == "F" ? "selected" : ""}}>Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><strong>Status :</strong></label>
+          <select id='status' name="status" class="form-control" style="width: 350px">
+              <option value="">Select</option>
+              <option value="1" {{$user->status == "1" ? "selected" : ""}}>Active</option>
+              <option value="0" {{$user->status == "0" ? "selected" : ""}}>In-Active</option>
+          </select>
+        </div>
 
         <label>Address Line 1</label></br>
         <input type="text" name="address_line1" id="address_line1" value="{{$user->address_line1}}" class="form-control"></br>

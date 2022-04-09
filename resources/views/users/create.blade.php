@@ -15,11 +15,31 @@
         <label>Email</label></br>
         <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}"></br>
 
-        <label>Gender</label></br>
+        <!-- <label>Gender</label></br>
         <input type="text" name="gender" id="gender" class="form-control" value="{{ old('gender') }}"></br>
 
-         <label>Status</label></br>
-        <input type="text" name="status" id="status" class="form-control" value="{{ old('status') }}"></br>
+        <label>Status</label></br>
+        <input type="text" name="status" id="status" class="form-control" value="{{ old('status') }}"></br> -->
+
+        <div class="form-group">
+          <label><strong>Gender :</strong></label>
+          <select id='gender' name="gender" class="form-control" style="width: 350px">
+              <option value="">Select</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><strong>Status :</strong></label>
+          <select id='status' name="status" class="form-control" style="width: 350px">
+              <option value="">Select</option>
+              <option value="1">Active</option>
+              <option value="0">In-Active</option>
+          </select>
+        </div>
+
+        
 
         <label>Address Line 1</label></br>
         <input type="text" name="address_line1" id="address_line1" class="form-control" value="{{ old('address_line1') }}"></br>

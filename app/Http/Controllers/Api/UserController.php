@@ -26,6 +26,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        $user =  User::find($id);
+
+        if(!$user)
+        {
+            return Response()->json([
+                'error' => true,
+                'msg' => "No such user exists !"
+            ], 200);
+        }
+
+        return $user;
     }
 }

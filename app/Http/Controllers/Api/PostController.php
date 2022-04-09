@@ -26,6 +26,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return Post::find($id);
+        $post = Post::find($id);
+
+        if(!$post)
+        {
+            return Response()->json([
+                'error' => true,
+                'msg' => "No such post exists !"
+            ], 200);
+        }
+
+        return $post;
     }
 }
