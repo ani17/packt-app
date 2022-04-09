@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Validator, Response;
 
 class TokenController extends Controller
 {
@@ -16,13 +17,7 @@ class TokenController extends Controller
      */
     public function index()
     {
-        $user = User::where('email', Auth::user()->email)->first();
-        
-        if(!$user)
-            return ["error" => "404"];
-
-        $token = $user->createToken('myapptoken')->plainTextToken;
-        return ['token' => $token];
+        return view('tokens.index');
     }
 
     /**
@@ -32,8 +27,34 @@ class TokenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $user = User::where('email', 'anirudh.m.mathur@gmail.com')->first();
+    {        
+        $validator = Validator::make($request->all(), [
+            'tokenString' => ['required', 'alpha_num', 'min:8', 'max:20'],
+        ]);
+
+        if ($validator->fails()) {
+
+            if($request->ajax())
+            {
+                return Response()->json([
+                    'success' => false,
+                    'file' => '',
+                    'errors' => $validator->getMessageBag()->toArray()
+                ], 200);
+            }
+
+            $this->throwValidationException(
+
+                $request, $validator
+
+            );
+        }
+
+        $user = User::where('email', Auth::user()->email)->first();
+        
+        if(!$user)
+            return ["error" => "404"];
+
         $token = $user->createToken('myapptoken')->plainTextToken;
         return ['token' => $token];
     }

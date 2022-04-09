@@ -15,7 +15,7 @@
         
         <label>Body</label></br>
         <textarea name="body" id="body" class="form-control">{{$post->body}}</textarea>
-
+        <br>
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
    

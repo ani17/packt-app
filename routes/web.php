@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('posts/fetch', [PostController::class, 'fetch'])->name('posts-fetch');
     Route::resource("/posts", PostController::class);
 
-    Route::get("/token", ([TokenController::class, "index"]));
+    Route::resource("/tokens", TokenController::class);
 });
 
 require __DIR__.'/auth.php';

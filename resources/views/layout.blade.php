@@ -97,6 +97,48 @@
             });
 
         });
+
+        $('#submitTokenData').click(function(e) {
+                $('#error-div').html('');
+
+                if(!$('#token-string').val())
+                {
+                    $('#error-div').html('<strong><li>Please enter the string</li></strong>');
+                    $('#error-div').show();
+                    return false;
+                }
+                
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: '{!! url('tokens') !!}',
+                    method: 'POST',
+                    data:{
+                        tokenString: $('#token-string').val(),
+                    },
+                    success: function(result) {
+                        if(result.errors) {
+                            $.each(result.errors, function(key, value) {
+                                // console.log(value);
+                                $('#error-div').html('<strong><li>'+value+'</li></strong>');
+                                $('#error-div').show();
+                            });
+                        } else {
+                            $('#error-div').html('');
+                            $('#error-div').hide();
+                            
+                            $('#token').val(result.token);
+                            $('#token-div').show();
+                        }
+                    }
+                });
+                
+            })
        
     </script>
 

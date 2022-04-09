@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 use DataTables;
 
 class PostController extends Controller
@@ -27,20 +28,22 @@ class PostController extends Controller
         (
             Post::select('id','title','body','user_id')
 
-        )->addColumn('Actions', function($data) {
+        )
+        ->editColumn('body', 'Hi {{ strlen($body) > 100 ? substr($body, 0, 100) . "..." : $body }}')
+        ->addColumn('Actions', function($data) {
                 
                 return
                 '
-                <div style="display:block">
-                    <a href="posts/' . $data->id . '" title="View Post">
-                        <button class="btn btn-info btn-sm">View</button>
+                <div>
+                    <a href="/posts/' . $data->id . '" title="View Post">
+                        <button class="btn btn-info btn-sm" style="margin-bottom:10px">View</button>
                     </a>
                     <br>
-                    <a href="posts/' . $data->id . '/edit" title="Edit Post">
-                        <button class="btn btn-primary btn-sm">Edit</button>
+                    <a href="/posts/' . $data->id . '/edit" title="Edit Post">
+                        <button class="btn btn-primary btn-sm" style="margin-bottom:10px">Edit</button>
                     </a>
                     <br>
-                    <form method="POST" action="posts/' . $data->id .'" accept-charset="UTF-8" style="display:inline">
+                    <form method="POST" action="/posts/' . $data->id .'" accept-charset="UTF-8" style="display:inline">
                         '. method_field("DELETE") .'
                         '. csrf_field() .'
                         <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)">Delete</button>
@@ -89,7 +92,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        // $post = Post::find($id);
+        $post = Post::join('users', 'posts.user_id', '=', 'users.id')
+                ->where('posts.id', '=', $id)
+                ->select('posts.*','users.name')
+                ->get()
+                ->first();
+        
         return view('posts.show')->with('post', $post);
     }
 

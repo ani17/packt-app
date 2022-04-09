@@ -36,7 +36,7 @@
 
         <!-- <label>New Password</label></br>
         <input type="password" name="password" id="password" value="" class="form-control"></br> -->
-
+        <br>
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
    

@@ -59,5 +59,19 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseToken"
+                    aria-expanded="true" aria-controls="collapseToken">
+                    <i class="fas fa-fw fa-boxes"></i>
+                    <span>Token Module</span>
+                </a>
+                <div id="collapseToken" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Token Components:</h6>
+                        <a class="collapse-item" href="{!! url('tokens') !!}">Generate API Token</a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
