@@ -7,18 +7,9 @@
                     <!-- <i class="fas fa-laugh-wink"></i> -->
                     <i class="fab fa-modx"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">Panel</div>
+                <div class="sidebar-brand-text mx-2">Dashboard</div>
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

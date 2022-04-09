@@ -43,11 +43,23 @@
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                        
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                         <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" onclick="event.preventDefault();this.closest('form').submit();">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
+                        </form>
+                        <!-- Authentication -->
+                        <!-- <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form> -->
                     </div>
                 </li>
 

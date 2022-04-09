@@ -20,6 +20,10 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['auth']], function() {
     
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
