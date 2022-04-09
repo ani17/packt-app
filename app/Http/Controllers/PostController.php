@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use DataTables;
 
 class PostController extends Controller
 {
@@ -14,8 +15,41 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view ('posts.index')->with('posts', $posts);
+        // $posts = Post::all();
+        // return view ('posts.index')->with('posts', $posts);
+
+        return view ('posts.index');
+    }
+
+    public function fetch()
+    {
+        return Datatables::of
+        (
+            Post::select('id','title','body','user_id')
+
+        )->addColumn('Actions', function($data) {
+                
+                return
+                '
+                <div style="display:block">
+                    <a href="posts/' . $data->id . '" title="View Post">
+                        <button class="btn btn-info btn-sm">View</button>
+                    </a>
+                    <br>
+                    <a href="posts/' . $data->id . '/edit" title="Edit Post">
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                    </a>
+                    <br>
+                    <form method="POST" action="posts/' . $data->id .'" accept-charset="UTF-8" style="display:inline">
+                        '. method_field("DELETE") .'
+                        '. csrf_field() .'
+                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)">Delete</button>
+                    </form>
+                </div>
+                ';
+            })
+        ->rawColumns(['Actions'])
+        ->make(true);
     }
 
     /**

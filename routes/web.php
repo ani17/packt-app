@@ -24,8 +24,12 @@ Route::group(['middleware' => ['auth']], function() {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('users/fetch', [UserController::class, 'fetch'])->name('users-fetch');
     Route::resource("/users", UserController::class);
+
+    Route::get('posts/fetch', [PostController::class, 'fetch'])->name('posts-fetch');
     Route::resource("/posts", PostController::class);
+
     Route::get("/token", ([TokenController::class, "index"]));
 });
 
