@@ -17,7 +17,15 @@ Make a directory on your system & clone the project using github url
     git clone https://github.com/ani17/packt-app.git packt-app
 ```
 
-##### 2. Configure environment variables
+##### 2. Install dependencies
+
+Install all packages & dependencies for this project using composer
+
+```bash
+    composer install
+```
+
+##### 3. Configure environment variables
 
 Create a .env file using .env.example file
 
@@ -26,27 +34,18 @@ Create a .env file using .env.example file
 ```
 
 Configure the mysql conection variables according to your requirements
+Note: Make sure DB_DATABASE exists !
 
 -   DB_HOST, DB_PORT, DB_DATABASE
 
-##### 3. Create Tables by running migrations & populate them with data
+##### 4. Create Tables by running migrations & populate them with data
 
 ```bash
     php artisan migrate
     php artisan db:seed
 ```
 
-##### 4. Run/Serve the application
-
-```bash
-    php artisan serve
-```
-
-##### 5. Visit you application by opening the url given below in the browser
-
-[http://localhost:8000/](http://localhost:8000/)
-
-##### 6. Test your Application
+##### 5. Test your Application
 
 You can also test your application by running the following commands
 
@@ -61,3 +60,13 @@ You can also test your application by running the following commands
     ```bash
         php artisan test --filter UserTest
     ```
+
+##### 6. Run/Serve the application
+
+```bash
+    php artisan serve
+```
+
+##### 7. Visit your application by opening the url given below in the browser
+
+[http://localhost:8000/](http://localhost:8000/)
