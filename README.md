@@ -13,8 +13,8 @@ This is a simple application in Laravel 9 which allows a user to -
 Make a directory on your system & clone the project using github url
 
 ```bash
-mkdir packt-app
-git clone https://github.com/ani17/packt-app.git packt-app
+    mkdir packt-app
+    git clone https://github.com/ani17/packt-app.git packt-app
 ```
 
 ##### 2. Configure environment variables
