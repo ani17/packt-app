@@ -83,7 +83,7 @@ class UserController extends Controller
             'address_line2' => ['required', 'regex:/^[-a-zA-Z0-9,.\s\/\(\)]*$/', 'min:1', 'max:255'],
             'city' => ['required'],
             'country' => ['required'],
-            'password' => ['required', 'min:8', 'max:20'],
+            'password' => ['required', 'min:8', 'max:80'],
         ]);
 
         $input = $request->all();

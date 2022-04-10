@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        $password = Hash::make('toptal');
+        $password = Hash::make('admin@123');
 
         $gender = $faker->randomElement(['male', 'female']);
         
