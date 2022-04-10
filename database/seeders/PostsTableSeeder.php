@@ -17,6 +17,11 @@ class PostsTableSeeder extends Seeder
     {
         Post::truncate();
 
+        // $response = Http::get('https://gorest.co.in/public/v2/posts')->json();
+        // foreach($response as $item) {
+        //     echo $item['name']. "<br>";
+        // }
+
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 50; $i++) {
