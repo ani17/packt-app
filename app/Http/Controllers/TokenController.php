@@ -55,7 +55,10 @@ class TokenController extends Controller
         if(!$user)
             return ["error" => "404"];
 
-        $token = $user->createToken('myapptoken')->plainTextToken;
+        $input = $request->all();
+        // dd($input['tokenString']);
+
+        $token = $user->createToken($input['tokenString'])->plainTextToken;
         return ['token' => $token];
     }
 }
