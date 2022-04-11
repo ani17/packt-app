@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
-                    <i class="fas fa-fw fa-boxes"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Users Module</span>
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -39,7 +39,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost"
                     aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fas fa-fw fa-boxes"></i>
+                   <i class="fa-solid fa-keyboard"></i>
                     <span>Post Module</span>
                 </a>
                 <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -53,7 +53,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseToken"
                     aria-expanded="true" aria-controls="collapseToken">
-                    <i class="fas fa-fw fa-boxes"></i>
+                    <i class="fas fa-fw fa-key"></i>
                     <span>Token Module</span>
                 </a>
                 <div id="collapseToken" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
